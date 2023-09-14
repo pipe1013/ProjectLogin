@@ -1,3 +1,3 @@
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/flask-shopy-2687365'
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/flaskshopy'
     SECRET_KEY = "sumamaestarepoderosa"

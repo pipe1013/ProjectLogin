@@ -7,6 +7,14 @@
             <li>
                 <a href="">Clientes</a>
             </li>
+            {% if current_user.is_authenticated %}
+            <li>
+                <a href="/auth/logout">Cerrar sesión</a>
+            </li>
+            <li>
+                <a href="/auth/login">Iniciar sesión</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

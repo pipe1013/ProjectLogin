@@ -1,14 +1,28 @@
 from datetime import datetime
+from flask_login import UserMixin
+from app import login
+from werkzeug.security import generate_password_hash , check_password_hash
 from app import db 
 
 #Creando los modelos
-class Cliente(db.Model):
+class Cliente(UserMixin, db.Model):
     __tablename__ = "clientes"
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(100) , unique = True)
     email = db.Column(db.String(120) , unique = True)
     password = db.Column(db.String(128))
+    
+    def set_password(self , password):
+        self.password = generate_password_hash(password)
+    def check_password(self , clave):
+        return check_password_hash(self.password , clave)
 
+#Decorador para asignar de bd el id del usuario que se logeo
+
+@login.user_loader 
+def load_user(id):
+    return Cliente.query.get(id)
+     
 class Producto(db.Model):
     __tablename__ = "productos"
     id = db.Column(db.Integer, primary_key = True)

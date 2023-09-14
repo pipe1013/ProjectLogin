@@ -4,9 +4,9 @@ from wtforms.validators import InputRequired,NumberRange
 from  flask_wtf.file import FileField, FileRequired, FileRequired, FileAllowed
 
 class ProductForm():
-    nombre = StringField('Ingrese el nombre del cliente :',
+    nombre = StringField('Ingrese el nombre del producto :',
                          validators=[InputRequired(message="Nombre del cliente")])
-    email = StringField('Ingrese el correo :', validators=[
+    precio = IntegerField('Precio :', validators=[
                                                     InputRequired(message="Perecio fuera de rango"),
                                                     NumberRange(message="Precio fuera de rango",
                                                                         min =1000,

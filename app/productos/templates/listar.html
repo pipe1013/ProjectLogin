@@ -9,6 +9,17 @@
             {{ mensaje }}
         </div>
 {% endfor %}
+
+{% if current_user.is_authenticated %}
+            <li>
+                <a href="/auth/logout">Cerrar sesión</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="/auth/login">Iniciar sesión</a>
+            </li>
+            {% endif %}
+
     <h1>Lista de productos</h1>
     <table class="table table-bordered">
         <thead>
@@ -17,6 +28,7 @@
                 <th>Precio</th>
                 <th>Imagen</th>
                 <th>Actualizar</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
